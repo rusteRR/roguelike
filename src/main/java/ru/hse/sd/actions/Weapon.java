@@ -1,6 +1,8 @@
 package ru.hse.sd.actions;
 
 import ru.hse.sd.Player;
+import ru.hse.sd.actions.interfaces.Action;
+import ru.hse.sd.actions.interfaces.InventoryArtifact;
 import ru.hse.sd.exceptions.InventoryIsFull;
 import ru.hse.sd.exceptions.PlayerIsAlreadyDead;
 

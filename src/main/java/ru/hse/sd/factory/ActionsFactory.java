@@ -1,6 +1,6 @@
 package ru.hse.sd.factory;
 
-import ru.hse.sd.actions.Action;
+import ru.hse.sd.actions.interfaces.Action;
 import ru.hse.sd.actions.Empty;
 import ru.hse.sd.actions.HealingBottle;
 import ru.hse.sd.actions.Wall;

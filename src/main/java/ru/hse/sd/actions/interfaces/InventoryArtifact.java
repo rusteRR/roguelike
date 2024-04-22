@@ -1,4 +1,4 @@
-package ru.hse.sd.actions;
+package ru.hse.sd.actions.interfaces;
 
 import ru.hse.sd.Player;
 import ru.hse.sd.exceptions.PlayerIsAlreadyDead;

@@ -1,10 +1,20 @@
 package ru.hse.sd;
 
+import ru.hse.sd.actions.interfaces.Action;
+import ru.hse.sd.config.Config;
+
+import java.util.List;
+
 public class Game {
 
-    void run() {
-        // TODO: there should be implemented game event loop with keyboard processing
-        // TODO: Afterwards user's action, finalizer runs
-        // TODO: finalizer is a part of game event loop, that makes an action for the mobs
+    private Player player;
+    private List<List<Action>> field;
+
+    public Game(Config gameConfig) {
+        player = new Player(gameConfig.getDefaultHp());
+    }
+
+    public int processMove() {
+        return 0;
     }
 }

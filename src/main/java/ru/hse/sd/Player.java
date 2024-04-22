@@ -1,6 +1,6 @@
 package ru.hse.sd;
 
-import ru.hse.sd.actions.InventoryArtifact;
+import ru.hse.sd.actions.interfaces.InventoryArtifact;
 import ru.hse.sd.exceptions.InventoryIsFull;
 import ru.hse.sd.exceptions.NonExistentArtifactId;
 import ru.hse.sd.exceptions.PlayerIsAlreadyDead;
@@ -12,6 +12,7 @@ public class Player {
     private int hp;
     private int damage;
     private int attackRadius;
+    private Coords coordinates;
     // key of map is ID. User can access element with ID 'i' by pressing the corresponding key button
     // We also support an invariant: entry exists in map <=> artifact is valid
     private final Map<Integer, InventoryArtifact> inventory = new HashMap<>();
@@ -68,6 +69,14 @@ public class Player {
         }
         freeInventorySlots.remove(freeSlot.get());
         inventory.put(freeSlot.get(), artifact);
+    }
+
+    public Coords getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coords coordinates) {
+        this.coordinates = coordinates;
     }
 
     private void removeArtifact(int artifactId) {
