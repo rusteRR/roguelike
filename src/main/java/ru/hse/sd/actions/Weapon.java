@@ -7,13 +7,14 @@ import ru.hse.sd.exceptions.InventoryIsFull;
 import ru.hse.sd.exceptions.PlayerIsAlreadyDead;
 
 public class Weapon implements Action, InventoryArtifact {
-    private final int damage;
-    private final int attackRadius;
+    private int damage = 10;
+    private int attackRadius = 1;
     public Weapon(int damage, int attackRadius) {
-
         this.damage = damage;
         this.attackRadius = attackRadius;
     }
+
+    public Weapon() {}
 
     @Override
     public void execute(Player player) throws InventoryIsFull {
