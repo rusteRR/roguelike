@@ -7,10 +7,12 @@ import ru.hse.sd.exceptions.InventoryIsFull;
 import ru.hse.sd.exceptions.PlayerIsAlreadyDead;
 
 public class HealingBottle implements Action, InventoryArtifact {
-    private final int hp;
+    private int hp = 30;
     public HealingBottle(int hp) {
         this.hp = hp;
     }
+
+    public HealingBottle() {}
 
     @Override
     public void execute(Player player) throws InventoryIsFull {
