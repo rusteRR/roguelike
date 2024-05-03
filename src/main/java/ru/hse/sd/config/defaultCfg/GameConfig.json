@@ -1,0 +1,13 @@
+{
+  "player": {
+    "hp": 100
+  },
+  "map": {
+    "max_x_size": 10,
+    "max_y_size": 10
+  },
+  "room": {
+    "max_x_size": 10,
+    "max_y_size": 10
+  }
+}
