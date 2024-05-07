@@ -1,47 +1,37 @@
 package ru.hse.sd.config;
 
-import java.util.Random;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class Config {
-    private int defaultHp = 100;
-    private int mapSizeX = 5;
-    private int mapSizeY = 5;
-    private int minRoomSize = 8;
-    private int maxRoomSize = 12;
-    private final Random rand = new Random();
+    @JsonSetter("player")
+    private PlayerConfig playerConfig;
+    @JsonSetter("map")
+    private MapConfig mapConfig;
+    @JsonSetter("room")
+    private RoomConfig roomConfig;
 
-    public int getDefaultHp() {
-        return defaultHp;
-    }
-    public void setDefaultHp(int defaultHp) {
-        this.defaultHp = defaultHp;
+    public void setRoomConfig(RoomConfig roomConfig) {
+        this.roomConfig = roomConfig;
     }
 
-    public int getMapSizeX() {
-        return mapSizeX; }
-    public void setMapSizeX(int mapSizeX) {
-        this.mapSizeX = mapSizeX;
+    public void setPlayerConfig(PlayerConfig playerConfig) {
+        this.playerConfig = playerConfig;
     }
 
-    public int getMapSizeY() {
-        return mapSizeY; }
-    public void setMapSizeY(int mapSizeY) {
-        this.mapSizeY = mapSizeY;
+    public void setMapConfig(MapConfig mapConfig) {
+        this.mapConfig = mapConfig;
     }
 
-    public int getMinRoomSize() {
-        return minRoomSize; }
-    public void setMinRoomSize(int minRoomSize) {
-        this.minRoomSize = minRoomSize;
+    public RoomConfig getRoomConfig() {
+        return roomConfig;
     }
 
-    public int getMaxRoomSize() {
-        return maxRoomSize; }
-    public void setMaxRoomSize(int maxRoomSize) {
-        this.maxRoomSize = maxRoomSize;
+    public MapConfig getMapConfig() {
+        return mapConfig;
     }
 
-    public int getRandomRoomSize() {
-        return rand.nextInt(getMaxRoomSize() - getMinRoomSize()) + getMinRoomSize();
+    public PlayerConfig getPlayerConfig() {
+        return playerConfig;
     }
 }

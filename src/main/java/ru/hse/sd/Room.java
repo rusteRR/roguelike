@@ -27,8 +27,8 @@ public class Room {
     public Room(Config gameConfig, int id) {
         roomId = id;
         exists = true;
-        dimX = gameConfig.getRandomRoomSize();
-        dimY = gameConfig.getRandomRoomSize();
+        dimX = 5; // TODO: random generator was removed from config
+        dimY = 5;
         field = new ArrayList<>(dimY);
         for (int y = 0; y < dimY; ++y) {
             List<Action> row = new ArrayList<>(dimX);

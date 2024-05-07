@@ -1,6 +1,7 @@
 package ru.hse.sd;
 
 import ru.hse.sd.config.Config;
+import ru.hse.sd.config.PlayerConfig;
 
 public class Game {
 
@@ -8,7 +9,8 @@ public class Game {
     private GameMap map;
 
     public Game(Config gameConfig) {
-        player = new Player(gameConfig.getDefaultHp());
+        PlayerConfig playerConfig = gameConfig.getPlayerConfig();
+        player = new Player(playerConfig.getHp());
         map = new GameMap(gameConfig);
     }
 
