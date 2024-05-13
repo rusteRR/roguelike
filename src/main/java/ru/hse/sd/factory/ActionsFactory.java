@@ -4,6 +4,7 @@ import ru.hse.sd.actions.interfaces.Action;
 import ru.hse.sd.actions.Empty;
 import ru.hse.sd.actions.HealingBottle;
 import ru.hse.sd.actions.Wall;
+import ru.hse.sd.actions.Weapon;
 
 public class ActionsFactory {
     private Action makeEmptyAction() {
@@ -16,5 +17,9 @@ public class ActionsFactory {
 
     private Action makeWall() {
         return new Wall();
+    }
+
+    private Action makeWeapon(int damage, int radius) {
+        return new Weapon(damage, radius);
     }
 }
