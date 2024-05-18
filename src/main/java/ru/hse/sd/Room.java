@@ -3,6 +3,7 @@ package ru.hse.sd;
 import ru.hse.sd.actions.*;
 import ru.hse.sd.actions.interfaces.Action;
 import ru.hse.sd.config.Config;
+import ru.hse.sd.config.RoomConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 public class Room {
     private final int roomId;
     private final GameMap gameMap;
-    private final Random rand = new Random();
+    private static final Random rand = new Random();
     private boolean[][] dfsVisited;
 
     private final int dimX;
@@ -23,20 +24,20 @@ public class Room {
 
     private List<List<Action>> field;
 
+    private int getRandomBoundSize(int min, int max) {
+        int randNumber = rand.nextInt(max - min) + min;
+        return randNumber - randNumber % 2 + 1;
+    }
+
     public Room(Config gameConfig, int id, GameMap map) {
+        RoomConfig roomConfig = gameConfig.getRoomConfig();
         roomId = id;
-//<<<<<<< HEAD
-//        exists = true;
-//        dimX = 5; // TODO: random generator was removed from config
-//        dimY = 5;
-//=======
         gameMap = map;
-        dimX = gameConfig.getRoomConfig().getXSizeLimit();
-        dimY = gameConfig.getRoomConfig().getYSizeLimit();
+        dimX = getRandomBoundSize(roomConfig.getMinBound(), roomConfig.getMaxBound());
+        dimY = getRandomBoundSize(roomConfig.getMinBound(), roomConfig.getMaxBound());
     }
 
     public void initialize() {
-//>>>>>>> f63d880 (second version of map generation)
         field = new ArrayList<>(dimY);
         for (int y = 0; y < dimY; ++y) {
             List<Action> row = new ArrayList<>(dimX);
