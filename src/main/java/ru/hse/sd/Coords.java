@@ -27,9 +27,12 @@ public class Coords {
         return x;
     }
 
-    public void moveByDelta(int xDelta, int yDelta) {
-        x += xDelta;
-        y += yDelta;
+    public Coords moveByDelta(int xDelta, int yDelta) {
+        return new Coords(room, x + xDelta, y + yDelta);
+    }
+    public int distanceTo(Coords coords) {
+        // if coords.room != this.room ...
+        return Math.abs(this.x - coords.x) + Math.abs(this.y - coords.y);
     }
 
     public void setX(int x) {
