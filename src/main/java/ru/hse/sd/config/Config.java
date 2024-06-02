@@ -1,7 +1,8 @@
 package ru.hse.sd.config;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
+
+import java.io.IOException;
 
 public class Config {
     @JsonSetter("player")

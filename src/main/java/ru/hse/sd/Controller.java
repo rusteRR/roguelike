@@ -4,10 +4,10 @@ import org.apache.commons.cli.*;
 import ru.hse.sd.config.Config;
 import ru.hse.sd.config.ConfigParser;
 
+import java.io.IOException;
 public class Controller {
-    private static final String defaultConfig = "src/main/java/ru/hse/sd/config/defaultCfg/GameConfig.json";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Options options = new Options();
 
         Option configOption = new Option("cf", "config-file", true, "config file path");
@@ -23,8 +23,14 @@ public class Controller {
             System.exit(1);
         }
 
-        String configFileName = cmd.getOptionValue("config-file", defaultConfig);
-        ConfigParser configParser = new ConfigParser();
-        Config config = configParser.parseConfig(configFileName);
+        String configFileName = cmd.getOptionValue("config-file");
+        Config config = configFileName == null ? ConfigParser.fromResources() : ConfigParser.fromFile(configFileName);
+
+        Game game = new Game(config);
+
+        while (!game.isFinished()) {
+            // parse input ...
+            game.processMove();
+        }
     }
 }

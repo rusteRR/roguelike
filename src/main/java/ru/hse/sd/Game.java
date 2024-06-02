@@ -4,7 +4,6 @@ import ru.hse.sd.config.Config;
 import ru.hse.sd.config.PlayerConfig;
 
 public class Game {
-
     private Player player;
     private GameMap map;
 
@@ -16,5 +15,9 @@ public class Game {
 
     public int processMove() {
         return 0;
+    }
+
+    public boolean isFinished() {
+        return false;
     }
 }
