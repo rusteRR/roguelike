@@ -25,7 +25,7 @@ public class HealingBottle implements Action, InventoryArtifact {
     }
 
     @Override
-    public void use(Player player) throws PlayerIsAlreadyDead {
+    public void use(Player player) {
         player.increaseHp(hp);
     }
 }

@@ -17,15 +17,14 @@ public class Player {
     // We also support an invariant: entry exists in map <=> artifact is valid
     private final Map<Integer, InventoryArtifact> inventory = new HashMap<>();
     private final Set<Integer> freeInventorySlots = new HashSet<>();
+
     public Player(int defaultHp) {
-        this.hp     = defaultHp;
+        this.hp = defaultHp;
         IntStream.rangeClosed(0, 9).forEach(freeInventorySlots::add);
     }
 
-    public void increaseHp(int delta) throws PlayerIsAlreadyDead {
-        if (hp <= 0) {
-            throw new PlayerIsAlreadyDead("Unable to increase HP of dead player");
-        }
+    public void increaseHp(int delta) {
+        // DO NOTHING IF DEAD
         hp = Math.max(hp + delta, 0);
     }
 

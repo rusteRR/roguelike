@@ -17,10 +17,11 @@ public class GameMap {
         MapConfig mapConfig = gameConfig.getMapConfig();
         rooms = new ArrayList<>(mapConfig.getYSizeLimit());
         for (int y = 0; y < mapConfig.getYSizeLimit(); ++y) {
-            rooms.set(y, new ArrayList<>(mapConfig.getXSizeLimit()));
+            var column = new ArrayList<Room>(mapConfig.getXSizeLimit());
             for (int x = 0; x < mapConfig.getXSizeLimit(); ++x) {
-                rooms.get(y).set(x, new Room(gameConfig, y * mapConfig.getYSizeLimit() + x));
+                column.add(new Room(gameConfig, y * mapConfig.getYSizeLimit() + x));
             }
+            rooms.add(column);
         }
     }
 }

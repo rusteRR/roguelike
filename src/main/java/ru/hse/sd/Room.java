@@ -33,9 +33,9 @@ public class Room {
         for (int y = 0; y < dimY; ++y) {
             List<Action> row = new ArrayList<>(dimX);
             for (int x = 0; x < dimX; ++x) {
-                row.set(x, new Empty());
+                row.add(new Empty());
             }
-            field.set(y, row);
+            field.add(row);
         }
         generateField();
     }
