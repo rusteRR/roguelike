@@ -4,7 +4,6 @@ import ru.hse.sd.Coords;
 import ru.hse.sd.Player;
 import ru.hse.sd.Room;
 import ru.hse.sd.actions.interfaces.Action;
-import ru.hse.sd.exceptions.InventoryIsFull;
 
 public class Door implements Action {
     private final Room destRoom;
@@ -18,7 +17,7 @@ public class Door implements Action {
     }
 
     @Override
-    public void execute(Player player) throws InventoryIsFull {
+    public void execute(Player player) {
         player.setCoordinates(new Coords(destRoom, destX, destY));
     }
 }

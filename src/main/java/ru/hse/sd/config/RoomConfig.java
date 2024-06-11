@@ -3,24 +3,24 @@ package ru.hse.sd.config;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class RoomConfig {
-    @JsonSetter("max_x_size")
-    private int XSizeLimit;
-    @JsonSetter("max_y_size")
-    private int YSizeLimit;
+    @JsonSetter("min_bound_size")
+    private int MinBound;
+    @JsonSetter("max_bound_size")
+    private int MaxBound;
 
-    public int getXSizeLimit() {
-        return XSizeLimit;
+    public int getMinBound() {
+        return MinBound;
     }
 
-    public int getYSizeLimit() {
-        return YSizeLimit;
+    public int getMaxBound() {
+        return MaxBound;
     }
 
-    public void setXSizeLimit(int XSizeLimit) {
-        this.XSizeLimit = XSizeLimit;
+    public void setMinBound(int MinBound) {
+        this.MinBound = MinBound;
     }
 
-    public void setYSizeLimit(int YSizeLimit) {
-        this.YSizeLimit = YSizeLimit;
+    public void setMaxBound(int MaxBound) {
+        this.MaxBound = MaxBound;
     }
 }

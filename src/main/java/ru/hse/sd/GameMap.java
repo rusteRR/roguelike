@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameMap {
-    // TODO: can we store only List<Rooms>. We dont even need to know how
-    // TODO: rooms actually connected
-    private List<List<Room>> rooms;
+    private final List<List<Room>> rooms;
 
     public List<List<Room>> getRooms() { return rooms; }
 
@@ -17,9 +15,18 @@ public class GameMap {
         MapConfig mapConfig = gameConfig.getMapConfig();
         rooms = new ArrayList<>(mapConfig.getYSizeLimit());
         for (int y = 0; y < mapConfig.getYSizeLimit(); ++y) {
-            var column = new ArrayList<Room>(mapConfig.getXSizeLimit());
+            List<Room> row = new ArrayList<>(mapConfig.getXSizeLimit());
             for (int x = 0; x < mapConfig.getXSizeLimit(); ++x) {
-                column.add(new Room(gameConfig, y * mapConfig.getYSizeLimit() + x));
+                row.add(new Room(gameConfig, y * mapConfig.getYSizeLimit() + x, this));
+            }
+            rooms.add(row);
+        }
+    }
+
+    public void initialize() {
+        for (List<Room> row : rooms) {
+            for (Room room : row) {
+                room.initialize();
             }
             rooms.add(column);
         }
