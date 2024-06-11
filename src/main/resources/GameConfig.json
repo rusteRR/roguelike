@@ -7,7 +7,7 @@
     "max_y_size": 10
   },
   "room": {
-    "max_x_size": 10,
-    "max_y_size": 10
+    "min_bound_size": 10,
+    "max_bound_size": 10
   }
 }

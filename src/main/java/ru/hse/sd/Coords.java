@@ -1,5 +1,7 @@
 package ru.hse.sd;
 
+import ru.hse.sd.actions.interfaces.Action;
+
 public class Coords {
     private int x;
     private int y;
@@ -9,6 +11,10 @@ public class Coords {
         this.room = room;
         this.x = x;
         this.y = y;
+    }
+
+    public Action getAction() {
+        return room.getAction(x, y);
     }
 
     public Room getRoom() {
@@ -27,9 +33,14 @@ public class Coords {
         return x;
     }
 
+    public boolean isValid() {
+        return room.validate(x, y);
+    }
+
     public Coords moveByDelta(int xDelta, int yDelta) {
         return new Coords(room, x + xDelta, y + yDelta);
     }
+
     public int distanceTo(Coords coords) {
         // if coords.room != this.room ...
         return Math.abs(this.x - coords.x) + Math.abs(this.y - coords.y);

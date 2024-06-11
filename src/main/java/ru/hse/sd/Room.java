@@ -25,7 +25,12 @@ public class Room {
     private List<List<Action>> field;
 
     private int getRandomBoundSize(int min, int max) {
-        int randNumber = rand.nextInt(max - min) + min;
+        int randNumber;
+        if (max == min) {
+            randNumber = min;
+        } else {
+            randNumber = rand.nextInt(max - min) + min;
+        }
         return randNumber - randNumber % 2 + 1;
     }
 
@@ -161,5 +166,11 @@ public class Room {
     }
 
     public List<List<Action>> getField() { return field; }
+    public Action getAction(int x, int y) {
+        return field.get(y).get(x);
+    }
     public int getRoomId() { return roomId; }
+    public boolean validate(int x, int y) {
+        return y >= 0 && y < field.size() && x >= 0 && x < field.get(0).size();
+    }
 }

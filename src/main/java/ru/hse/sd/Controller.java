@@ -1,36 +1,36 @@
 package ru.hse.sd;
 
-import org.apache.commons.cli.*;
-import ru.hse.sd.config.Config;
-import ru.hse.sd.config.ConfigParser;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import java.io.IOException;
-public class Controller {
+public class Controller implements KeyListener {
 
-    public static void main(String[] args) throws IOException {
-        Options options = new Options();
+    private static InputEvent currentInput;
 
-        Option configOption = new Option("cf", "config-file", true, "config file path");
+    public Controller() {
+        currentInput = null;
+    }
 
-        options.addOption(configOption);
-        CommandLineParser parser = new DefaultParser();
-        CommandLine cmd = null;
-
-        try {
-            cmd = parser.parse(options, args);
-        } catch (ParseException e) {
-            System.out.printf("Exception occurred: %s", e.getMessage());
-            System.exit(1);
+    public KeyEvent getKey() {
+        if (currentInput instanceof KeyEvent) {
+            return (KeyEvent) currentInput;
         }
+        return null;
+    }
 
-        String configFileName = cmd.getOptionValue("config-file");
-        Config config = configFileName == null ? ConfigParser.fromResources() : ConfigParser.fromFile(configFileName);
+    @Override
+    public void keyTyped(KeyEvent e) {}
 
-        Game game = new Game(config);
-
-        while (!game.isFinished()) {
-            // parse input ...
-            game.processMove();
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (currentInput == null) {
+            currentInput = e;
         }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        currentInput = null;
     }
 }

@@ -7,9 +7,6 @@ import ru.hse.sd.Game;
 import ru.hse.sd.mob.action.MobAction;
 import ru.hse.sd.mob.strategy.BehaviorStrategy;
 
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 /**
  * AbstractMob contains stats of mob and its "conditional strategy", i.e. AI of this mob.
  * <p/>

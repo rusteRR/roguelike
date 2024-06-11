@@ -28,7 +28,6 @@ public class GameMap {
             for (Room room : row) {
                 room.initialize();
             }
-            rooms.add(column);
         }
     }
 }
